@@ -54,11 +54,13 @@
       display: grid;
       place-items: center;
       border-radius: 50%;
+      overflow: hidden;
       color: var(--white);
       background: var(--accent);
       font-family: var(--serif);
       font-size: 24px;
     }
+    .brand-mark img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center; }
     .brand-name { font-weight: 700; letter-spacing: .02em; }
     .brand-role { color: var(--muted); font-size: 12px; line-height: 1.4; }
     .nav { display: grid; gap: 8px; margin-top: auto; margin-bottom: auto; padding: 40px 0; }
@@ -211,7 +213,7 @@
   <div class="shell">
     <aside class="sidebar">
       <a class="brand" href="#home" aria-label="Back to home">
-        <span class="brand-mark">A</span>
+        <span class="brand-mark"><img src="1129qxx.jpg" alt="Alan Wang portrait"></span>
         <span>
           <span class="brand-name">Alan Wang</span>
           <span class="brand-role">Marketing / People / Ideas</span>
