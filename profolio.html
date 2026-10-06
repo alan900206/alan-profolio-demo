@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio and CV of Chih Yung (Alan) Wang, a people-focused marketer and learning experience builder.">
+  <title>Alan Wang | Portfolio & CV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #18211f;
+      --muted: #68736e;
+      --paper: #f4f4ee;
+      --white: #fbfbf8;
+      --line: #d8ddd6;
+      --accent: #718b70;
+      --accent-soft: #dce5d8;
+      --leaf: #5d7563;
+      --serif: "DM Serif Display", Georgia, serif;
+      --sans: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--sans);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .shell { display: grid; grid-template-columns: 270px minmax(0, 1fr); min-height: 100vh; }
+
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 42px 34px 30px;
+      border-right: 1px solid var(--line);
+      background: var(--paper);
+      z-index: 10;
+    }
+    .brand { display: grid; gap: 8px; }
+    .brand-mark {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--white);
+      background: var(--accent);
+      font-family: var(--serif);
+      font-size: 24px;
+    }
+    .brand-name { font-weight: 700; letter-spacing: .02em; }
+    .brand-role { color: var(--muted); font-size: 12px; line-height: 1.4; }
+    .nav { display: grid; gap: 8px; margin-top: auto; margin-bottom: auto; padding: 40px 0; }
+    .nav a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 0;
+      color: var(--muted);
+      font-size: 13px;
+      transition: color .2s ease, transform .2s ease;
+    }
+    .nav a::before { content: ""; width: 7px; height: 7px; border: 1px solid currentColor; border-radius: 50%; }
+    .nav a:hover, .nav a:focus-visible { color: var(--accent); transform: translateX(4px); }
+    .sidebar-foot { display: grid; gap: 4px; color: var(--muted); font-size: 11px; }
+    .sidebar-foot a { color: var(--ink); }
+
+    main { overflow: hidden; }
+    .section { min-height: 100vh; padding: 90px clamp(28px, 8vw, 120px); position: relative; }
+    .section-label { color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { font-weight: 400; }
+    h1, h2 { font-family: var(--serif); line-height: 1.02; }
+    h1 { max-width: 850px; margin-bottom: 28px; font-size: clamp(58px, 9vw, 136px); letter-spacing: -.04em; }
+    h2 { margin-bottom: 48px; font-size: clamp(44px, 6vw, 88px); letter-spacing: -.035em; }
+    h3 { margin-bottom: 8px; font-size: 21px; line-height: 1.25; }
+    .hero { display: flex; flex-direction: column; justify-content: center; background: var(--white); }
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: 9%;
+      bottom: 10%;
+      width: min(25vw, 300px);
+      height: min(25vw, 300px);
+      border: 1px solid var(--accent-soft);
+      border-radius: 50%;
+      box-shadow: 0 0 0 26px rgba(220, 229, 216, .42), 0 0 0 52px rgba(220, 229, 216, .22);
+      pointer-events: none;
+    }
+    .hero-intro { position: relative; z-index: 1; max-width: 760px; }
+    .hero-kicker { max-width: 480px; margin-bottom: 36px; color: var(--leaf); font-size: 14px; }
+    .hero h1 em { color: var(--accent); font-style: normal; }
+    .hero-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; align-items: end; margin-top: 40px; max-width: 790px; }
+    .hero-note { max-width: 330px; color: var(--muted); font-size: 14px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 19px;
+      border: 1px solid var(--ink);
+      color: var(--ink);
+      background: transparent;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      transition: color .2s ease, background .2s ease;
+    }
+    .button:hover, .button:focus-visible { color: var(--white); background: var(--ink); }
+    .button span { color: var(--accent); font-size: 18px; line-height: 0; }
+
+    .about { background: var(--paper); }
+    .about-grid { display: grid; grid-template-columns: minmax(180px, .6fr) minmax(0, 1.4fr); gap: clamp(40px, 8vw, 130px); align-items: start; }
+    .about-copy { max-width: 650px; color: var(--muted); font-size: 18px; }
+    .about-copy strong { color: var(--ink); font-weight: 600; }
+    .facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 56px; }
+    .fact { padding-top: 16px; border-top: 1px solid var(--line); }
+    .fact-number { display: block; color: var(--accent); font-family: var(--serif); font-size: 42px; line-height: 1; }
+    .fact-label { display: block; margin-top: 8px; color: var(--muted); font-size: 12px; }
+
+    .education { background: var(--white); }
+    .education-list { border-top: 1px solid var(--line); }
+    .education-item { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 30px; padding: 30px 0; border-bottom: 1px solid var(--line); }
+    .education-date { color: var(--accent); font-size: 12px; font-weight: 700; line-height: 1.7; }
+    .education-date span { color: var(--muted); font-weight: 400; }
+    .education-school { margin-bottom: 7px; color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .education-item h3 { margin-bottom: 10px; font-size: 30px; }
+    .education-detail { max-width: 650px; margin-bottom: 0; color: var(--muted); font-size: 14px; }
+
+    .experience { background: var(--leaf); color: var(--white); }
+    .experience .section-label { color: var(--accent-soft); }
+    .timeline { border-top: 1px solid rgba(255,255,255,.32); }
+    .timeline-item { display: grid; grid-template-columns: 160px minmax(0, 1fr) 180px; gap: 30px; padding: 28px 0; border-bottom: 1px solid rgba(255,255,255,.2); }
+    .timeline-date, .timeline-company { color: rgba(255,255,255,.65); font-size: 12px; }
+    .timeline h3 { margin-bottom: 5px; font-size: 25px; }
+    .timeline p { max-width: 620px; margin-bottom: 0; color: rgba(255,255,255,.75); font-size: 14px; }
+    .timeline ul, .project ul { max-width: 680px; margin: 0; padding-left: 18px; color: rgba(255,255,255,.75); font-size: 14px; }
+    .timeline li, .project li { margin-bottom: 8px; }
+    .timeline li:last-child, .project li:last-child { margin-bottom: 0; }
+
+    .projects { background: var(--accent-soft); }
+    .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--ink); border: 1px solid var(--ink); }
+    .project { min-height: 300px; padding: 30px; background: var(--accent-soft); display: flex; flex-direction: column; justify-content: space-between; }
+    .project:nth-child(2) { background: var(--white); }
+    .project:nth-child(3) { background: #e6e8dd; }
+    .project-tag { color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .project h3 { max-width: 380px; margin-top: 25px; font-size: 29px; }
+    .project p { max-width: 440px; margin-bottom: 0; color: var(--muted); font-size: 13px; }
+    .project ul { max-width: 440px; padding-left: 17px; color: var(--muted); font-size: 13px; }
+    .project strong { color: var(--ink); }
+    .project-metric { color: var(--ink); font-family: var(--serif); font-size: 42px; line-height: 1; }
+    .project-metric small { font-family: var(--sans); font-size: 12px; color: var(--muted); }
+
+    .contact { display: flex; flex-direction: column; justify-content: space-between; background: var(--white); }
+    .contact-content { max-width: 800px; }
+    .contact h2 { margin-bottom: 25px; }
+    .contact-lead { max-width: 530px; margin-bottom: 45px; color: var(--muted); font-size: 16px; }
+    .contact-links { display: flex; flex-wrap: wrap; gap: 14px 36px; }
+    .contact-links a { padding-bottom: 4px; border-bottom: 1px solid var(--accent); font-size: 14px; }
+    .contact-footer { display: flex; justify-content: space-between; gap: 20px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; }
+
+    @media (max-width: 820px) {
+      .shell { display: block; }
+      .sidebar { position: sticky; width: 100%; height: auto; display: flex; flex-direction: row; align-items: center; padding: 16px 20px; border-right: 0; border-bottom: 1px solid var(--line); }
+      .brand { display: flex; align-items: center; gap: 10px; }
+      .brand-mark { width: 36px; height: 36px; font-size: 18px; }
+      .brand-role, .sidebar-foot { display: none; }
+      .nav { display: flex; gap: 16px; margin: 0 0 0 auto; padding: 0; }
+      .nav a { padding: 8px 0; font-size: 11px; }
+      .nav a::before { display: none; }
+      .section { min-height: auto; padding: 76px 22px; }
+      .hero { min-height: calc(100vh - 69px); padding-top: 70px; padding-bottom: 70px; }
+      .hero::after { right: 7%; bottom: 8%; width: 150px; height: 150px; }
+      h1 { font-size: clamp(50px, 16vw, 90px); }
+      h2 { margin-bottom: 34px; font-size: clamp(46px, 14vw, 74px); }
+      .about-grid { grid-template-columns: 1fr; gap: 28px; }
+      .about-copy { font-size: 16px; }
+      .facts { margin-top: 38px; }
+      .education-item { grid-template-columns: 1fr; gap: 12px; }
+      .education-item h3 { font-size: 25px; }
+      .timeline-item { grid-template-columns: 1fr; gap: 9px; }
+      .timeline-company { order: 2; }
+      .timeline-content { order: 1; }
+      .timeline-date { order: 3; }
+      .project-grid { grid-template-columns: 1fr; }
+      .project { min-height: 260px; }
+      .contact-footer { flex-direction: column; }
+    }
+    @media (max-width: 460px) {
+      .nav { gap: 9px; max-width: 66vw; overflow-x: auto; scrollbar-width: none; }
+      .nav::-webkit-scrollbar { display: none; }
+      .nav a { font-size: 10px; }
+      .brand-name { font-size: 13px; }
+      .hero-bottom { align-items: start; flex-direction: column; }
+      .facts { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <a class="brand" href="#home" aria-label="Back to home">
+        <span class="brand-mark">A</span>
+        <span>
+          <span class="brand-name">Alan Wang</span>
+          <span class="brand-role">Marketing / People / Ideas</span>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="sidebar-foot">
+        <span>Taipei, Taiwan</span>
+        <a href="mailto:a0989721652@gmail.com">a0989721652@gmail.com</a>
+      </div>
+    </aside>
+
+    <main>
+      <section class="section hero" id="home">
+        <div class="hero-intro">
+          <p class="section-label">Portfolio & CV / 2026</p>
+          <p class="hero-kicker">A curious builder working across marketing, people development, and thoughtful digital experiences.</p>
+          <h1>Chih Yung<br><em>(Alan)</em> Wang</h1>
+          <div class="hero-bottom">
+            <p class="hero-note">I turn observations into clear stories, useful systems, and experiences people want to take part in.</p>
+            <a class="button" href="WK%20exp_CV_NTU_Alan%20Wang.pdf" download>Download CV <span>+</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section about" id="about">
+        <div class="about-grid">
+          <div>
+            <p class="section-label">01 / About me</p>
+            <h2>A people-first<br>point of view.</h2>
+          </div>
+          <div>
+            <div class="about-copy">
+              <p>Hi, I am Alan, currently pursuing a <strong>Master of Institute of Health Policy and Management at National Taiwan University</strong>. My work sits at the intersection of consumer insight, content, and employee experience.</p>
+              <p>I enjoy making complex things feel approachable: from a social campaign that invites people into a story, to a learning program that helps a team feel more connected.</p>
+            </div>
+            <div class="facts">
+              <div class="fact"><span class="fact-number">820</span><span class="fact-label">TOEIC score</span></div>
+              <div class="fact"><span class="fact-number">4.8</span><span class="fact-label">Learning program satisfaction</span></div>
+              <div class="fact"><span class="fact-number">11.4k</span><span class="fact-label">Organic impressions on one post</span></div>
+              <div class="fact"><span class="fact-number">3</span><span class="fact-label">Languages: Mandarin, English, Korean</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section education" id="education">
+        <p class="section-label">02 / Education</p>
+        <h2>Learning with<br>purpose.</h2>
+        <div class="education-list">
+          <article class="education-item">
+            <div class="education-date">2025.09 - 2027.06<br><span>Expected</span></div>
+            <div>
+              <p class="education-school">National Taiwan University</p>
+              <h3>Master of Institute of Health Policy and Management</h3>
+              <p class="education-detail">Taipei, Taiwan · Graduate study focused on health policy, management, and the systems that shape people&apos;s well-being.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section experience" id="experience">
+        <p class="section-label">03 / Experience</p>
+        <h2>Where I have<br>made an impact.</h2>
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-company">Appier</div>
+            <div class="timeline-content"><h3>Learning & Development Intern</h3><ul><li>Developed a mental-health AI-powered coaching chatbot, including the interaction flow and emotional-cue logic through iterative vibe coding.</li><li>Led the internal English speaking program, covering session and assessment scheduling, curriculum design, grouping automation, and program communications.</li><li>Achieved a 4.8-star attendee satisfaction rating; the 2026 new session attracted more than 100 participants.</li><li>Executed the end-to-end migration of the company&apos;s learning platform within two months through continuous cross-team communication.</li></ul></div>
+            <div class="timeline-date">2025.06 - Present</div>
+          </article>
+          <article class="timeline-item">
+            <div class="timeline-company">Michael Kors</div>
+            <div class="timeline-content"><h3>HR & Administration Intern</h3><ul><li>Analyzed weekly sales and inventory data from more than 10 competitors, including Gucci, Michael Kors, and Kate Spade, across 15 stores nationwide.</li><li>Visualized findings to provide actionable insights for sales directors and support retail decision-making.</li><li>Assisted with store-supply procurement, focusing on budget control and efficient resource utilization.</li><li>Coordinated recruitment screening and interview scheduling for store and headquarters roles.</li></ul></div>
+            <div class="timeline-date">2024.05 - 2024.08</div>
+          </article>
+          <article class="timeline-item">
+            <div class="timeline-company">FJU BA Camp</div>
+            <div class="timeline-content"><h3>Event Leader</h3><ul><li>Led a 50-person team with delegative leadership, identifying team strengths and assigning roles to maximize ownership across functional teams.</li><li>Developed contingency plans and made real-time adjustments to maintain program continuity and participant safety throughout the five-day camp.</li><li>Oversaw end-to-end program operations, from curriculum design to on-site execution and emergency handling.</li><li>Delivered a consistent, high-quality experience for 96 high-school participants.</li></ul></div>
+            <div class="timeline-date">2021.11 - 2022.02</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section projects" id="projects">
+        <p class="section-label">04 / Selected projects</p>
+        <h2>Ideas, in motion.</h2>
+        <div class="project-grid">
+          <article class="project">
+            <div><span class="project-tag">Marketing strategy · 2022.03 - 2022.12</span><h3>Integrated Marketing Proposal for Postpartum Care</h3><ul><li>Won 2nd place in a university marketing team competition.</li><li>Conducted 13 marketing activities, including UGC campaigns and influencer collaborations, contributing to a 105% increase in monthly engagement and 95% customer satisfaction.</li><li>Managed Instagram visual content strategies, improving the account by 350+ followers and increasing impressions by 42% in two months.</li><li>Generated 8,000+ organic impressions with 96.4% external reach.</li><li>Launched a UGC storytelling campaign that contributed to a 5% monthly increase in room occupancy.</li></ul></div>
+            <div class="project-metric">105% <small>monthly engagement increase</small></div>
+          </article>
+          <article class="project">
+            <div><span class="project-tag">Content & community</span><h3>Cosmetic & Skincare Social Media Account</h3><ul><li>Created beauty-focused content for <strong>@chung_makeupup</strong>, sharing skincare insights, product usage tips, and daily-use beauty recommendations.</li><li>Applied consumer and trend insights to create high-engagement content for an audience interested in drugstore skincare.</li><li>Developed a self-created recommendation score to make product comparisons easier to understand.</li><li>Achieved 11,400+ impressions on a highlighted post with 97% external traffic, increasing organic search visibility without paid promotion.</li></ul></div>
+            <div class="project-metric">97% <small>external traffic on a feature post</small></div>
+          </article>
+          <article class="project">
+            <div><span class="project-tag">People experience · Appier</span><h3>Internal English Speaking Program</h3><ul><li>Designed the program structure, curriculum, session schedule, assessment flow, and participant grouping automation.</li><li>Coordinated with internal stakeholders to keep delivery consistent across sessions.</li><li>Reached a 4.8-star attendee satisfaction rating and more than 100 enrollments in the 2026 new session.</li></ul></div>
+            <div class="project-metric">100+ <small>participants in the 2026 session</small></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section contact" id="contact">
+        <div class="contact-content">
+          <p class="section-label">05 / Contact</p>
+          <h2>Let us make<br>something useful.</h2>
+          <p class="contact-lead">Whether the challenge is a story, a community, or a better way for people to learn, I would love to hear from you.</p>
+          <div class="contact-links">
+            <a href="mailto:a0989721652@gmail.com">a0989721652@gmail.com</a>
+            <a href="tel:+886989721652">+886 989 721 652</a>
+          </div>
+        </div>
+        <footer class="contact-footer"><span>Chih Yung (Alan) Wang</span><span>Taipei, Taiwan / Portfolio CV</span></footer>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
